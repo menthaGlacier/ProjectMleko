@@ -2,25 +2,17 @@
 // Project Mleko
 // Created by Andrew Valkonov
 //-----------------------------------------------------
-// Version: Release 1.0
+// Version: Release 1.1
 //-----------------------------------------------------
 // https://github.com/menthaGlacier/ProjectMleko
 //-----------------------------------------------------
 
 #include <iostream>
-#include <string>
+#include "words.h"
 #include "functions.h"
 
 int main()
 {
-	std::string words[110] = { "abandon", "absorb", "draft", "dramatically", "encounter", "educate", "flag", "horse", "dairy", "animal", "stomach",
-	"daughter", "hollow", "pork", "herbivore", "gorgeous", "language", "goth", "sheep", "coal", "captain", "noble", "europe", "coconut",
-	"shell", "rocket", "sawmill", "grave", "painting", "crew", "palace", "cure", "fallout", "trumpet", "small", "town", "cow", "bull",
-	"game", "this", "coast", "lived", "skyhigh", "mother", "more", "entity", "distant", "wood", "land", "mansion", "roaring", "away", "from", "here",
-	"josuke", "part", "eight", "best", "manga", "honest", "honey", "charge", "phone", "king", "crimson", "sticky", "fingers", "vento", "aureo",
-	"expectation", "dream", "wanted", "help", "door", "stuck", "please", "below", "jingle", "funny", "jigsaw", "asked", "nobody", "picture", "hotline",
-	"slow", "abcdef", "qwerty", "love", "delux", "milagro", "boy", "door", "gainer", "fan", "graphics", "stick", "borov", "resort", "bozar",
-	"boxes", "continue", "hamon", "towel", "truth", "wolf", "mouth", "will", "never", "reach", "end" };
 	uint16_t cows = 0, bulls = 0, lives = 1;
 	bool gameWin = false, gameInit = false;
 	std::string theWord, guessWord;
@@ -51,6 +43,7 @@ int main()
 		{
 			uint16_t choice = 0;
 			std::cout << "Game over, man, game over." << '\n';
+			std::cout << "The word: " << theWord << '\n';
 			std::cout << "Do you want to play again? (1 - Yes, 2 - No)" << '\n';
 			while (!(choice == 1 || choice == 2))
 			{
@@ -63,12 +56,7 @@ int main()
 
 		if (!gameInit)
 		{
-			bool check = false;
-			while (!check)
-			{
-				theWord = words[randomGenerator(0, (sizeof(words) / sizeof(words[0])) - 1)];
-				check = isogramCheck(theWord, theWord.length());
-			}
+			theWord = words[randomGenerator(0, (sizeof(words) / sizeof(words[0])) - 1)];
 
 			lives = theWord.length() * 2;
 			gameInit = true;
@@ -87,5 +75,6 @@ int main()
 
 		if (bulls == theWord.length()) { gameWin = true; }
 		lives--;
-	}
+	} 
+
 }

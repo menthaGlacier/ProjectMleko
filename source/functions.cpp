@@ -6,13 +6,14 @@ int randomGenerator(uint16_t min, uint16_t max)
 	return (rand() % (max - min + 1)) + min;
 }
 
-bool isogramCheck(std::string word, uint16_t length)
+bool isogramCheck(std::string word)
 {
+	uint16_t length = word.length();
 	sort(word.begin(), word.end());
 
 	for (int i = 0; i < length; i++)
-	{ if (word[i + 1] == word[i]) { return false; } }
-	return true;
+	{ if (word[i + 1] == word[i]) { return true; } }
+	return false;
 }
 
 void findTheBeats(std::string word, std::string guess, uint16_t& bulls, uint16_t& cows)
