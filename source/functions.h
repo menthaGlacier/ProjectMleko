@@ -2,12 +2,14 @@
 #define FUNCS_H
 
 #include <iostream>
+#include <algorithm> // For sort() 
 #include <math.h>
 #include <time.h>
-#include <algorithm>  // for sort() 
+#include <fstream>
 
 int randomGenerator(uint16_t min, uint16_t max);
-bool isogramCheck(std::string word); // now there are no other words than isograms, yet function will remain for debug purposes
-void findTheBeats(std::string word, std::string guess, uint16_t& bulls, uint16_t& сows); // its actully trying to find bulls and cows
+bool filter(std::string word);
+bool isogramCheck(std::string word);
+void findTheBeats(std::string word, std::string guess, uint16_t& bulls, uint16_t& сows); // It's actully trying to find bulls and cows
 
 #endif
