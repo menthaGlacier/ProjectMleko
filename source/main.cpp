@@ -17,7 +17,7 @@ int main()
 	bool gameWin = false, gameInit = false;
 	std::string theWord, guessWord;
 
-	std::cout << "Welcome to the in-console Bulls and Cows game!" << '\n';
+	std::cout << "Welcome to the in-console Bulls and Cows game!" << "\t\t\t\t\t\t\t" << "Made by Andrew Valkonov." << '\n';
 	std::cout << "If you don't know the rules - go to the Wikipedia, lol." << '\n';
 	std::cout << "Here we use isograms - the words with no repeating letters." << "\n\n";
 
@@ -35,7 +35,7 @@ int main()
 			while (!(choice == 1 || choice == 2))
 			{ std::cout << "Your answer: "; std::cin >> choice; }
 
-			if (choice == 1) { gameInit = false; system("cls"); }
+			if (choice == 1) { gameInit = false; system("cls"); break; }
 			else { std::cout << '\n' << "Bye then!"; exit(0); }
 		}
 
@@ -50,7 +50,7 @@ int main()
 				std::cout << "Your answer: "; std::cin >> choice;
 			}
 
-			if (choice == 1) { gameInit = false; system("cls"); }
+			if (choice == 1) { gameInit = false; system("cls"); break; }
 			else { std::cout << '\n' << "Bye then!"; exit(0); }
 		}
 
@@ -60,7 +60,6 @@ int main()
 
 			lives = theWord.length() * 2;
 			gameInit = true;
-			//std::cout << theWord << " " << theWord.length() << '\n';
 			std::cout << "Try to guess the " << theWord.length() << " letter word!" << '\n';
 		}
 		
