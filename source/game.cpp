@@ -15,7 +15,7 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 		std::ifstream readFile("words.txt");
 		if (!readFile)
 		{
-			std::cerr << "FILE READING ERROR" << '\n';
+			std::cerr << "An error occured while trying to open words.txt!" << '\n';
 			system("pause");
 			exit(1);
 		}
@@ -25,7 +25,11 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 
 		for (int i = 0; i < wordsValue; i++)
 		{
-			readFile >> words[i];
+			std::string tryWord;
+			readFile >> tryWord;
+			if (tryWord == "") { wordsValue = i-1; break; }
+			if (!filter(tryWord)) { --i; continue; }
+			words[i] = tryWord;
 		}
 
 		if (Mode == GameMode::Words) { theSequence = words[randomGenerator(0, wordsValue)]; }
@@ -34,12 +38,20 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 
 	else if (Mode == GameMode::Numbers)
 	{
+		// The algorithm takes a random number (in range of 0 to N) in array of numbers
+		// and replaces it with 99, it then sorts array and decreasing N, repeating the
+		// process until the number of length of diffuculty is created 
+		uint16_t N = 10;
+		uint16_t buffer[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		uint16_t difficulty = randomGenerator(4, 7);
 		std::string number = "";
 
 		for (int i = 0; i < difficulty; i++)
 		{
-			// There will be algorithm eventually
+			uint16_t tryNumber = randomGenerator(0, N-1);
+			number += std::to_string(buffer[tryNumber]);
+			buffer[tryNumber] = 99;
+			std::sort(buffer, buffer+N); N--;
 		}
 
 		theSequence = number;

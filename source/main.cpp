@@ -2,7 +2,7 @@
 // Project Mleko - Bulls and Cows
 // Created by Andrew Valkonov
 //-----------------------------------------------------
-// Version: Indev 2.0
+// Version: Pre-Release 2.0
 //-----------------------------------------------------
 // https://github.com/menthaGlacier/ProjectMleko
 //-----------------------------------------------------
@@ -94,11 +94,12 @@ int main()
 					system("cls");
 					break;
 				}
-				
+
 				else if (choice == '3') { exit(0); }
 			}
 		}
 
+		// This is entry point of the game process and triggering everytime player starts new game
 		if (!gameInit)
 		{
 			system("cls");
@@ -109,7 +110,7 @@ int main()
 				std::cout << "Try to guess the " << theSequence.length() << " letter word!" << '\n';
 			}
 
-			else
+			else (Mode == GameMode::Numbers)
 			{
 				generateSequence(Mode, theSequence);
 				std::cout << "Try to guess the " << theSequence.length() << " digit number!" << '\n';
@@ -123,7 +124,6 @@ int main()
 		else { std::cout << "You have " << lives << " lives to go." << '\n'; }
 
 		std::cout << "Your guess: ";
-		//std::cout << theSequence;
 		std::cin >> guessSequence;
 		findTheBeats(theSequence, guessSequence, bulls, cows);
 
