@@ -34,6 +34,14 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 
 	else if (Mode == GameMode::Numbers)
 	{
+		uint16_t difficulty = randomGenerator(4, 7);
+		std::string number = "";
 
+		for (int i = 0; i < difficulty; i++)
+		{
+			// There will be algorithm eventually
+		}
+
+		theSequence = number;
 	}
 }

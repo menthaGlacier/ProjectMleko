@@ -71,7 +71,7 @@ int main()
 			char choice = 0;
 			std::cout << "Game over, man, game over." << '\n';
 			std::cout << "The answer: " << theSequence << '\n';
-			std::cout << "Do you want to play again? (1 - Yes, continue, 2 - No, Exit the Game)" << '\n';
+			std::cout << "Do you want to play again? (1 - Yes, continue, 2 - Yes, switch Game Mode, 3 - No, Exit the Game)" << '\n';
 
 			while (true)
 			{
@@ -85,7 +85,17 @@ int main()
 					break;
 				}
 
-				else if (choice == '2') { exit(0); }
+				else if (choice == '2')
+				{
+					if (Mode == GameMode::Words) { Mode = GameMode::Numbers; }
+					else if (Mode == GameMode::Numbers) { Mode = GameMode::Words; }
+
+					gameInit = false;
+					system("cls");
+					break;
+				}
+				
+				else if (choice == '3') { exit(0); }
 			}
 		}
 
