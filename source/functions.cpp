@@ -21,7 +21,7 @@ bool filter(std::string word)
 	// Letter check
 	for (int i = 0; i < word.length(); i++)
 	{
-		if (word[i] >= 'a' && word[i] <= 'z') { return false; }
+		if (!(word[i] >= 'a' && word[i] <= 'z')) { return false; }
 	}
 
 	return true;

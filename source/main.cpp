@@ -2,7 +2,7 @@
 // Project Mleko - Bulls and Cows
 // Created by Andrew Valkonov
 //-----------------------------------------------------
-// Version: Pre-Release 2.0
+// Version: Pre-Release 2.0.1
 //-----------------------------------------------------
 // https://github.com/menthaGlacier/ProjectMleko
 //-----------------------------------------------------
@@ -110,7 +110,7 @@ int main()
 				std::cout << "Try to guess the " << theSequence.length() << " letter word!" << '\n';
 			}
 
-			else (Mode == GameMode::Numbers)
+			else if (Mode == GameMode::Numbers)
 			{
 				generateSequence(Mode, theSequence);
 				std::cout << "Try to guess the " << theSequence.length() << " digit number!" << '\n';
