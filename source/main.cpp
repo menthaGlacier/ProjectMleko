@@ -2,7 +2,7 @@
 // Project Mleko - Bulls and Cows
 // Created by Andrew Valkonov
 //-----------------------------------------------------
-// Version: Pre-Release 2.0.1
+// Version: Release 2.1
 //-----------------------------------------------------
 // https://github.com/menthaGlacier/ProjectMleko
 //-----------------------------------------------------
@@ -26,6 +26,7 @@ int main()
 		char choice;
 		std::cout << "Your choice: ";
 		std::cin >> choice;
+		std::cin.ignore(255, '\n');
 		if (choice == '1') { Mode = GameMode::Words; break; }
 		else if (choice == '2') { Mode = GameMode::Numbers; break; }
 		else if (choice == '3') { exit(0); }
@@ -44,6 +45,7 @@ int main()
 			{
 				std::cout << "Your choice: ";
 				std::cin >> choice;
+				std::cin.ignore(255, '\n');
 
 				if (choice == '1')
 				{
@@ -77,6 +79,7 @@ int main()
 			{
 				std::cout << "Your choice: ";
 				std::cin >> choice;
+				std::cin.ignore(255, '\n');
 
 				if (choice == '1')
 				{
@@ -125,6 +128,7 @@ int main()
 
 		std::cout << "Your guess: ";
 		std::cin >> guessSequence;
+		std::cin.ignore(255, '\n');
 		findTheBeats(theSequence, guessSequence, bulls, cows);
 
 		std::cout << "Bulls: " << bulls << " " << "Cows: " << cows << "\n\n";

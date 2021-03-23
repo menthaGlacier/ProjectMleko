@@ -2,7 +2,6 @@
 
 uint16_t cows = 0, bulls = 0, lives = 1;
 bool gameWin = false, gameInit = false;
-bool debugToggle = false;
 std::string theSequence, guessSequence;
 GameMode Mode = GameMode::Menu;
 
@@ -32,7 +31,14 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 			words[i] = tryWord;
 		}
 
-		if (Mode == GameMode::Words) { theSequence = words[randomGenerator(0, wordsValue)]; }
+		if (wordsValue < 10)
+		{
+			std::cerr << "Value of Words can't be lower than 10, please modify your words.txt file!" << '\n';
+			system("pause");
+			exit(1);
+		}
+
+		theSequence = words[randomGenerator(0, wordsValue)];
 		delete[] words;
 	}
 
