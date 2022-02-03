@@ -7,8 +7,10 @@
 #include <time.h>
 #include <fstream>
 
+// This function generates the random number in (min, max) range
 int randomGenerator(uint16_t min, uint16_t max);
+
+// This function filters the words taken from a words.txt file
 bool filter(std::string word);
-void findTheBeats(std::string word, std::string guess, uint16_t& bulls, uint16_t& сows); // It's actully trying to find bulls and cows
 
 #endif

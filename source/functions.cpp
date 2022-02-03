@@ -22,18 +22,3 @@ bool filter(std::string word)
 	return true;
 }
 
-void findTheBeats(std::string word, std::string guess, uint16_t& bulls, uint16_t& cows)
-{
-	bulls = 0, cows = 0;
-	for (int i = 0; i <= guess.length() - 1; i++)
-	{
-		for (int j = 0; j <= word.length() - 1; j++)
-		{
-			if (guess[i] == word[j])
-			{
-				if (i == j) { bulls++; break; }
-				else if (i != j) { cows++; break; }
-			}
-		}
-	}
-}

@@ -5,6 +5,46 @@ bool gameWin = false, gameInit = false;
 std::string theSequence, guessSequence;
 GameMode Mode = GameMode::Menu;
 
+void processChoice(GameMode& Mode, bool& gameInit)
+{
+	char choice;
+
+	while (true)
+	{
+		std::cout << "Your choice: ";
+		std::cin >> choice;
+		std::cin.ignore(255, '\n');
+
+		if (Mode == GameMode::Menu)
+		{
+			if (choice == '1') { Mode = GameMode::Words; break; }
+			else if (choice == '2') { Mode = GameMode::Numbers; break; }
+		}
+
+		else if (Mode == GameMode::Words || Mode == GameMode::Numbers)
+		{
+			if (choice == '1')
+			{
+				gameInit = false;
+				system("cls");
+				break;
+			}
+
+			else if (choice == '2')
+			{
+				if (Mode == GameMode::Words) { Mode = GameMode::Numbers; }
+				else if (Mode == GameMode::Numbers) { Mode = GameMode::Words; }
+
+				gameInit = false;
+				system("cls");
+				break;
+			}
+		}
+		
+		if (choice == '3') { exit(0); }
+	}
+}
+
 void generateSequence(GameMode Mode, std::string& theSequence)
 {
 	if (Mode == GameMode::Words)
@@ -61,5 +101,21 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 		}
 
 		theSequence = number;
+	}
+}
+
+void findTheBeasts(std::string word, std::string guess, uint16_t& bulls, uint16_t& cows)
+{
+	bulls = 0, cows = 0;
+	for (int i = 0; i <= guess.length() - 1; i++)
+	{
+		for (int j = 0; j <= word.length() - 1; j++)
+		{
+			if (guess[i] == word[j])
+			{
+				if (i == j) { bulls++; break; }
+				else if (i != j) { cows++; break; }
+			}
+		}
 	}
 }
