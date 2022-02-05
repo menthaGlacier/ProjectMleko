@@ -47,6 +47,13 @@ void processChoice(GameMode& Mode, bool& gameInit)
 
 void generateSequence(GameMode Mode, std::string& theSequence)
 {
+	// Words Game Mode Algorithm:
+	// The algorithm opens "words.txt" file and reads from it a number that specifies
+	// the size of the words array. It then reads words from file until the size limit
+	// is reached, or until the words run out earlier. Each word is converted to lowercase
+	// and written in the array if it successfully passes the filter. The sequence is then
+	// randomly selected from the array and array gets deleted
+
 	if (Mode == GameMode::Words)
 	{
 		size_t wordsValue;
@@ -67,6 +74,7 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 			std::string tryWord;
 			readFile >> tryWord;
 			if (tryWord == "") { wordsValue = i-1; break; }
+			toLowercase(tryWord);
 			if (!filter(tryWord)) { --i; continue; }
 			words[i] = tryWord;
 		}
@@ -82,11 +90,13 @@ void generateSequence(GameMode Mode, std::string& theSequence)
 		delete[] words;
 	}
 
+	// Numbers Game Mode Algorithm:
+	// The algorithm takes a random number (in range of 0 to N) in array of numbers
+	// and replaces it with 99, it then sorts array and decreasing N, repeating the
+	// process until the number of length of diffuculty is created 
+
 	else if (Mode == GameMode::Numbers)
 	{
-		// The algorithm takes a random number (in range of 0 to N) in array of numbers
-		// and replaces it with 99, it then sorts array and decreasing N, repeating the
-		// process until the number of length of diffuculty is created 
 		uint16_t N = 10;
 		uint16_t buffer[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		uint16_t difficulty = randomGenerator(4, 7);

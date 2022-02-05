@@ -2,7 +2,7 @@
 // Project Mleko - Bulls and Cows
 // Created by Andrew Valkonov
 //-----------------------------------------------------
-// Version: Release 2.2
+// Version: Release 2.3
 //-----------------------------------------------------
 // https://github.com/menthaGlacier/ProjectMleko
 //-----------------------------------------------------

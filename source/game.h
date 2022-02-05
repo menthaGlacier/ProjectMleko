@@ -1,7 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <string>
 #include "functions.h"
 
 enum class GameMode
