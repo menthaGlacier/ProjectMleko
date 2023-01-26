@@ -1,0 +1,5 @@
+# Ignore complier binaries
+mleko-out
+
+# Ignore Valgrind log file
+vg-log.txt
